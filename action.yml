@@ -1,0 +1,26 @@
+name: 'Prism Action'
+description: 'Groups repositories, highlights starred ones, and applies a time-based color gradient.'
+author: 'Rutansh Govardhan'
+branding:
+  icon: 'filter'
+  color: 'purple'
+
+inputs:
+  github-token:
+    description: 'GitHub token to authenticate API requests'
+    required: true
+  username:
+    description: 'The GitHub username to fetch repositories for'
+    required: true
+  output-file:
+    description: 'Path to save the generated markdown (e.g., output.md)'
+    required: false
+    default: 'output.md'
+
+outputs:
+  markdown-list:
+    description: 'The generated markdown string with colored repositories'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
