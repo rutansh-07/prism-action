@@ -1,0 +1,23 @@
+name: Test Prism Action
+
+# This allows you to trigger the test manually from the GitHub website
+on:
+  workflow_dispatch: 
+
+jobs:
+  test-my-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Prism Action
+        uses: rutansh-07/prism-action@main # Testing directly from the main branch
+        with:
+          # Automatically uses a temporary token provided by GitHub Actions
+          github-token: ${{ secrets.GITHUB_TOKEN }} 
+          username: 'rutansh-07'
+          output-file: 'my-colored-repos.md'
+          
+      - name: Display the Output in Logs
+        run: cat my-colored-repos.md
